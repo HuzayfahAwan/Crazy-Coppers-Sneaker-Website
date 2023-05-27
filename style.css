@@ -1,0 +1,108 @@
+#startnav {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#endnav {
+  display: flex;
+}
+
+#needspace {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#scrollingtext {
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.crazysize {
+  max-width: 100%;
+  height: auto;
+}
+
+.navbar-item.border {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-color: black;
+  border-width: 1px;
+  gap: 15px;
+}
+
+nav.navbar {
+  border-bottom-style: solid;
+  border-width: medium;
+  border-color: black;
+}
+
+footer.column {
+  background-color: black;
+  border-top-style: solid;
+  border-top-width: medium;
+  border-top-color: red;
+}
+
+div.columns.is-centered {
+  flex-wrap: wrap;
+}
+
+div.columns.is-centered.is-variable.is-5 {
+  flex-wrap: wrap;
+}
+
+div.column.has-text-centered {
+  border-style: solid;
+  border-color: #1a762a;
+  border-width: medium;
+}
+
+.card {
+  border-style: dashed;
+  border-color: #1a762a;
+  border-width: 2.5px;
+}
+
+img.imgborder {
+  border-bottom-style: dotted;
+  border-color: black;
+  border-width: 2px;
+}
+
+div.content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+strong {
+  color: white;
+}
+
+body {
+  background-image: url("redsmoke.png");
+  border-style: solid;
+  border-color: black;
+  border-width: medium;
+  background-position: center;
+  background-size: auto;
+  background-repeat: repeat-x;
+  background-attachment: fixed;
+}
+
+.button {
+  border: 2px solid black; 
+  transition-duration: .4s;
+  width: 250px;
+  position: relative;
+  border-radius: 12px;
+  font-family: "Lucida Console";
+}
+
+.button:hover {
+  background-color: grey;
+}
