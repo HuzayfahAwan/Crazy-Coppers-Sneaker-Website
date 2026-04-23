@@ -1,309 +1,370 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crazy Coppers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crazy Coppers — Most Expensive Sneakers</title>
   <link rel="icon" href="sneakerlogo.png" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+  <div class="toast" id="toast"></div>
+
   <nav class="navbar">
-    <div id="startnav">
-      <a class="navbar-item border" href="index.html">
-        <img class="crazysize" src="sneakerlogo.png" alt="Crazy Coppers" />
-        <h1>Crazy Coppers</h1>
-      </a>
+    <a class="navbar-brand" href="index.html">
+      <img src="sneakerlogo.png" alt="Crazy Coppers" class="nav-logo">
+      <span class="nav-title">Crazy Coppers</span>
+    </a>
+
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <span>AS PREMIUM AS IT GETS &mdash; 9 OF THE MOST EXPENSIVE SNEAKERS ON EARTH 🔥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS PREMIUM AS IT GETS &mdash; 9 OF THE MOST EXPENSIVE SNEAKERS ON EARTH 🔥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
     </div>
-    <marquee id="scrollingtext" behavior="alternate" direction="right" width="730" height="50" scrollamount="2.0"
-      loop="infinite">
-      AS PREMIUM AS IT GETS WITH 9 OF THE MOST EXPENSIVE, POPULAR SNEAKERS ON EARTH&nbsp;&#128293;
-    </marquee>
-    <div class="navbar-end">
-      <a class="navbar-item border" href="https://www.nike.com/">
-        <img src="https://www.freeiconspng.com/thumbs/nike-logo/nike-logo-icon-hd-transparent-2.png" alt="Nike" />
-      </a>
-      <a class="navbar-item" href="https://www.adidas.com/us">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas" />
-      </a>
-      <a class="navbar-item border" href="https://www.newbalance.com/">
-        <img src="https://www.freepnglogos.com/uploads/new-balance-png-logo/new-balance-logo-png-white-0.png"
-          alt="New Balance" />
-      </a>
-      <a class="navbar-item" href="https://www.goat.com/">
-        <img src="https://logos-world.net/wp-content/uploads/2022/01/GOAT-Logo.png" alt="GOAT" />
-      </a>
-      <a class="navbar-item border" href="https://stockx.com/">
-        <img src="stockx.png" alt="Stock X" />
-      </a>
+
+    <div class="nav-right">
+      <div class="nav-brands">
+        <a href="https://www.nike.com/" target="_blank" class="brand-link">Nike</a>
+        <a href="https://www.adidas.com/us" target="_blank" class="brand-link">Adidas</a>
+        <a href="https://www.newbalance.com/" target="_blank" class="brand-link">New Balance</a>
+        <a href="https://www.goat.com/" target="_blank" class="brand-link">GOAT</a>
+        <a href="https://stockx.com/" target="_blank" class="brand-link">StockX</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+        <span class="theme-icon">☀️</span>
+      </button>
     </div>
   </nav>
 
-  <!-- ROW 1 -->
-  <div class="columns is-centered">
-    <!-- COLUMN 1 -->
-    <div class="column is-one-third mt-6">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <img class="imgborder"
-            src="https://sneakernews.com/wp-content/uploads/2019/12/air-jordan-1-dior-release-info-5.jpg"
-            title="DIOR Air Jordan 1 First Look | SneakerNews.com" alt="Dior x Air Jordan 1 High 2020" />
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Dior x Air Jordan 1 High 2020</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $12,000</p>
-            <a href="https://www.goat.com/sneakers/dior-x-air-jordan-1-high-dior-aj1-low">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
-          </div>
-        </div>
+  <section class="hero">
+    <h1 class="hero-title">The Most Expensive <span class="gold">Sneakers</span> on Earth</h1>
+    <p class="hero-sub">9 grails that broke the market. From designer collabs to ultra-rare limited drops.</p>
+    <div class="stats-bar">
+      <div class="stat">
+        <span class="stat-number" data-target="9">0</span>
+        <span class="stat-label">Sneakers</span>
       </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" data-target="60800" data-format="currency">$0</span>
+        <span class="stat-label">Combined Value</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number" data-target="15000" data-format="currency">$0</span>
+        <span class="stat-label">Highest Price</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="spotlight">
+    <div class="spotlight-badge">👑 Most Wanted</div>
+    <div class="spotlight-inner">
+      <div class="spotlight-img-wrap">
+        <img src="https://sneakernews.com/wp-content/uploads/2022/05/louis-vuitton-nike-air-force-1-low-white.jpg" alt="Louis Vuitton x Air Force 1 Low Triple White">
+      </div>
+      <div class="spotlight-content">
+        <p class="spotlight-rank">#1 Most Expensive</p>
+        <h2 class="spotlight-name">Louis Vuitton x Air Force 1 Low 'Triple White'</h2>
+        <p class="spotlight-price">~$15,000</p>
+        <p class="spotlight-fact">Only 200 pairs released worldwide. Designed by Virgil Abloh as part of his final Louis Vuitton collection. A full set sold at Sotheby's for a staggering $352,800.</p>
+        <a class="cop-btn spotlight-cta" href="https://www.goat.com/sneakers/louis-vuitton-x-air-force-1-low-triple-white-1a9v-white-low" target="_blank">Cop It</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" class="search-input" id="searchInput" placeholder="Search sneakers...">
+    </div>
+    <div class="filter-pills">
+      <button class="filter-pill active" data-brand="all">All</button>
+      <button class="filter-pill" data-brand="louis-vuitton">Louis Vuitton</button>
+      <button class="filter-pill" data-brand="dior">Dior</button>
+      <button class="filter-pill" data-brand="jordan">Jordan</button>
+      <button class="filter-pill" data-brand="nike">Nike</button>
+      <button class="filter-pill" data-brand="travis-scott">Travis Scott</button>
+      <button class="filter-pill" data-brand="off-white">Off-White</button>
+      <button class="filter-pill" data-brand="undefeated">Undefeated</button>
+    </div>
+    <div class="sort-bar">
+      <span class="sort-label">Sort:</span>
+      <button class="sort-btn active" data-sort="desc">$ High → Low</button>
+      <button class="sort-btn" data-sort="asc">$ Low → High</button>
     </div>
   </div>
 
-  <!-- ROW 2 -->
-  <div class="columns is-centered is-variable is-5">
-    <!-- COLUMN 1 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <img class="imgborder"
-            src="https://sothebys-com.brightspotcdn.com/08/78/cdf20df349c3ada0d67145e1ee4c/893sneakers-cbdrz-13.jpg"
-            title="The History Behind the Louis Vuitton Nike Air Force 1 by Virgil Abloh"
-            alt="Louis Vuitton x Air Force 1 Low 'White Team Royal'" />
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Louis Vuitton x Air Force 1 Low 'White Team Royal'
-            </p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $10,000</p>
-            <a href="https://stockx.com/louis-vuitton-nike-air-force-1-low-by-virgil-abloh-white-royal">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+  <p class="no-results" id="noResults">No sneakers match your search.</p>
+
+  <main class="sneaker-grid" id="sneakerGrid">
+
+    <div class="sneaker-card fade-in" id="sneaker-lv-triple-white" data-price="15000" data-brand="louis-vuitton">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://sneakernews.com/wp-content/uploads/2022/05/louis-vuitton-nike-air-force-1-low-white.jpg" alt="Louis Vuitton x Air Force 1 Low Triple White" loading="lazy">
+            <span class="rank-badge">#1</span>
+            <span class="price-badge">~$15,000</span>
           </div>
+          <div class="card-body">
+            <h2 class="card-name">Louis Vuitton x Air Force 1 Low 'Triple White'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/louis-vuitton-x-air-force-1-low-triple-white-1a9v-white-low" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-lv-triple-white">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🔥</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Only 200 pairs released worldwide. Designed by Virgil Abloh as part of his final LV collection. A full set sold at Sotheby's for $352,800.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 2 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img class="imgborder"
-              src="https://sneakerbardetroit.com/wp-content/uploads/2022/01/Air-Jordan-1-Igloo-2017-861428-100-Release-Date-1.jpeg"
-              title="Air Jordan 1 Igloo 2017 861428-100 Release Date - SBD"
-              alt="Air Jordan 1 Retro High OG NRG 'Igloo'" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Air Jordan 1 Retro High OG NRG 'Igloo'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $6,500</p>
-            <a href="https://stockx.com/air-jordan-1-retro-high-igloo">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+    <div class="sneaker-card fade-in" id="sneaker-dior-aj1" data-price="12000" data-brand="dior">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://sneakernews.com/wp-content/uploads/2019/12/air-jordan-1-dior-release-info-5.jpg" alt="Dior x Air Jordan 1 High 2020" loading="lazy">
+            <span class="rank-badge">#2</span>
+            <span class="price-badge">~$12,000</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-name">Dior x Air Jordan 1 High 2020</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/dior-x-air-jordan-1-high-dior-aj1-low" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-dior-aj1">⬆</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 3 -->
-  <div id="needspace" class="columns is-centered is-variable is-5">
-
-    <!-- COLUMN 1 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img class="imgborder"
-              src="https://footwearnews.com/wp-content/uploads/2020/05/nike-sb-dunk-low-pro-ben-jerrys-chunky-dunky-4.jpg"
-              title="Ben & Jerry’s x Nike SB Dunk ‘Chunky Dunky’ Can Cost You $10K on the Resale Market"
-              alt="Ben and Jerry's x Dunk Low SB 'Chunky Dunky'" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Ben and Jerry's x Dunk Low SB 'Chunky Dunky'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $2,000</p>
-            <a href="https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
-          </div>
+        <div class="card-back">
+          <span class="back-icon">👟</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Just 8,000 pairs made globally. Kim Jones x Nike collab. Original retail was $2,000 — received 5 million applications for those 8,000 pairs.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 2 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img class="imgborder"
-              src="https://sneakernews.com/wp-content/uploads/2022/05/louis-vuitton-nike-air-force-1-low-white.jpg"
-              title="Louis Vuitton Nike Air Force 1 2022 Releases | SneakerNews.com"
-              alt="Louis Vuttion x Air Force 1 Low 'Triple White'" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Louis Vuttion x Air Force 1 Low 'Triple White'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $15,000</p>
-            <a href="https://www.goat.com/sneakers/louis-vuitton-x-air-force-1-low-triple-white-1a9v-white-low">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+    <div class="sneaker-card fade-in" id="sneaker-foamposite-tianjin" data-price="11000" data-brand="nike">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://2app.kicksonfire.com/kofapp/upload/events_images/ipad_nike-air-foamposite-one-tianjin-6.jpg" alt="Foamposite One Tianjin 2015" loading="lazy">
+            <span class="rank-badge">#3</span>
+            <span class="price-badge">~$11,000</span>
           </div>
+          <div class="card-body">
+            <h2 class="card-name">Foamposite One 'Tianjin' 2015</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/foamposite-one-tianjin-744307-001" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-foamposite-tianjin">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🇨🇳</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">China-exclusive release with fewer than 200 pairs made. Named after the coastal city of Tianjin. Never officially sold in the United States.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 3 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card ">
-        <div class="card-image">
-          <img class="imgborder"
-            src="https://2app.kicksonfire.com/kofapp/upload/events_images/ipad_nike-air-foamposite-one-tianjin-6.jpg"
-            title="Nike Air Foamposite One - Tianjin 744307001 - KicksOnFire.com" alt="Foamposite One 'Tianjin' 2015" />
-          </a>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-centered has-text-black">Foamposite One 'Tianjin' 2015</p>
-            <p class="subtitle is-5 has-text-centered has-text-black">Price: ~ $11,000</p>
-            <a href="https://www.goat.com/sneakers/foamposite-one-tianjin-744307-001">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+    <div class="sneaker-card fade-in" id="sneaker-lv-white-team-royal" data-price="10000" data-brand="louis-vuitton">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://sothebys-com.brightspotcdn.com/08/78/cdf20df349c3ada0d67145e1ee4c/893sneakers-cbdrz-13.jpg" alt="Louis Vuitton x Air Force 1 Low White Team Royal" loading="lazy">
+            <span class="rank-badge">#4</span>
+            <span class="price-badge">~$10,000</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-name">Louis Vuitton x Air Force 1 Low 'White Team Royal'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://stockx.com/louis-vuitton-nike-air-force-1-low-by-virgil-abloh-white-royal" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-lv-white-team-royal">⬆</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ROW 4 -->
-  <div class="columns is-centered is-variable is-5">
-    <!-- COLUMN 1 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <img class="imgborder"
-            src="https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/qhkqa20avfhumxwky4rq/air-jordan-1-high-travis-scott-release-date.jpg"
-            title="the scotts shoes, sell big 57% off - www.wingspantg.com"
-            alt="Travis Scott x Air Jordan 1 Retro High OG 'Mocha'" />
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Travis Scott x Air Jordan 1 Retro High OG 'Mocha'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $1,900</p>
-            <a href="https://www.goat.com/sneakers/travis-scott-x-air-jordan-1-retro-high-og-cd4487-100">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
-          </div>
+        <div class="card-back">
+          <span class="back-icon">🏆</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Auctioned at Sotheby's to benefit Virgil Abloh's "Post-Modern" Scholarship Fund. Part of his legendary farewell collab with Nike.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
 
-    <!-- COLUMN 2 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <figure class="image">
-            <img class="imgborder" src="https://cdn.flightclub.com/TEMPLATE/254935/1.jpg"
-              title="Nike Air Force 1 Low Off-White University Gold"
-              alt="Off-White x Air Force 1 Low 'University Gold/Lemonade'" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Off-White x Air Force 1 Low 'University
-              Gold/Lemonade'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $1,500</p>
-            <a href="https://www.goat.com/sneakers/off-white-x-air-force-1-low-university-gold-dd1876-700">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+    <div class="sneaker-card fade-in" id="sneaker-aj1-igloo" data-price="6500" data-brand="jordan">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://sneakerbardetroit.com/wp-content/uploads/2022/01/Air-Jordan-1-Igloo-2017-861428-100-Release-Date-1.jpeg" alt="Air Jordan 1 Retro High OG NRG Igloo" loading="lazy">
+            <span class="rank-badge">#5</span>
+            <span class="price-badge">~$6,500</span>
           </div>
+          <div class="card-body">
+            <h2 class="card-name">Air Jordan 1 Retro High OG NRG 'Igloo'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://stockx.com/air-jordan-1-retro-high-igloo" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-aj1-igloo">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🧊</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">An ultra-limited NRG (non-retailed general) release. The cool mint "Igloo" colorway barely made it to retail — one of the rarest Jordan 1 colorways ever.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- ROW 5 -->
-  <div class="columns is-centered is-variable is-5">
-    <!-- COLUMN 1 -->
-    <div class="column is-one-third">
-      <!-- CARD -->
-      <div class="card">
-        <div class="card-image">
-          <img class="imgborder"
-            src="https://2app.kicksonfire.com/kofapp/upload/events_master_images/ipad_undefeated-x-nike-kobe-5-protro-what-if-pack.jpg"
-            title="Undefeated x Nike Kobe 5 Protro What If Pack DB5551-900 - KicksOnFire.com"
-            alt="Undefeated x Zoom Kobe 5 Protro 'What If Pack'" />
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <p class="title is-4 has-text-black has-text-centered">Undefeated x Zoom Kobe 5 Protro 'What If Pack'</p>
-            <p class="subtitle is-5 has-text-black has-text-centered">Price: ~ $900</p>
-            <a
-              href="https://www.goat.com/sneakers/undefeated-x-zoom-kobe-5-protro-what-if-pack-special-box-undft-kobe-5-what-if-pack?utm_source=google_int&utm_medium=google_shopping_int&utm_campaign=16777478842_&utm_content=_&utm_term=194498140864&gclid=Cj0KCQjwjIKYBhC6ARIsAGEds-I-9sbB2-BCckScXq1haNhkscGwa684ovZEJdV_QkvLY6Tt3PZrX7gaAtkBEALw_wcB">
-              <button class="button is-medium">
-                Cop It!
-              </button>
-            </a>
+    <div class="sneaker-card fade-in" id="sneaker-chunky-dunky" data-price="2000" data-brand="nike">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://footwearnews.com/wp-content/uploads/2020/05/nike-sb-dunk-low-pro-ben-jerrys-chunky-dunky-4.jpg" alt="Ben and Jerrys x Dunk Low SB Chunky Dunky" loading="lazy">
+            <span class="rank-badge">#6</span>
+            <span class="price-badge">~$2,000</span>
           </div>
+          <div class="card-body">
+            <h2 class="card-name">Ben &amp; Jerry's x Dunk Low SB 'Chunky Dunky'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://stockx.com/nike-sb-dunk-low-ben-jerrys-chunky-dunky" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-chunky-dunky">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🍦</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Only 150 pairs sold at retail, with 50 additional friends & family pairs. Inspired by Ben & Jerry's Chunky Monkey. Widely considered the holy grail of SB Dunks.</p>
+          <button class="flip-back-btn">← Back</button>
         </div>
       </div>
     </div>
-  </div>
 
-  <footer class="column">
-    <div class="content">
-      <p>
-        <strong>Business Inquiries: </strong>
-        <a href="mailto: CrazyCoppers@gmail.com">
-          <strong style="color: #259cf7;">CrazyCoppers@gmail.com</strong>
-        </a>
-      </p>
-      <p>
-        <strong>Check Out the Release Calendar for Updates on Sneaker Drops: </strong>
-        <a href="https://www.kicksonfire.com/app/">
-          <strong style="color: #259cf7;">Upcoming Sneaker Drops</strong>
-        </a>
-      </p>
+    <div class="sneaker-card fade-in" id="sneaker-travis-scott-mocha" data-price="1900" data-brand="travis-scott">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/qhkqa20avfhumxwky4rq/air-jordan-1-high-travis-scott-release-date.jpg" alt="Travis Scott x Air Jordan 1 Retro High OG Mocha" loading="lazy">
+            <span class="rank-badge">#7</span>
+            <span class="price-badge">~$1,900</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-name">Travis Scott x Air Jordan 1 Retro High OG 'Mocha'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/travis-scott-x-air-jordan-1-retro-high-og-cd4487-100" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-travis-scott-mocha">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🌵</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Travis Scott's first Air Jordan 1 collab. Famous for the backwards Nike Swoosh on the left shoe — an intentional design choice by Scott to represent his rebellious style.</p>
+          <button class="flip-back-btn">← Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sneaker-card fade-in" id="sneaker-off-white-lemonade" data-price="1500" data-brand="off-white">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://cdn.flightclub.com/TEMPLATE/254935/1.jpg" alt="Off-White x Air Force 1 Low University Gold Lemonade" loading="lazy">
+            <span class="rank-badge">#8</span>
+            <span class="price-badge">~$1,500</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-name">Off-White x Air Force 1 Low 'University Gold/Lemonade'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/off-white-x-air-force-1-low-university-gold-dd1876-700" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-off-white-lemonade">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🍋</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">Part of Virgil Abloh's iconic "The Ten" collection. Features deconstructed design with exposed foam, visible stitching, and the signature orange zip-tie.</p>
+          <button class="flip-back-btn">← Back</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sneaker-card fade-in" id="sneaker-undftd-kobe5" data-price="900" data-brand="undefeated">
+      <div class="card-inner">
+        <div class="card-front">
+          <div class="card-img-wrap skeleton">
+            <img src="https://2app.kicksonfire.com/kofapp/upload/events_master_images/ipad_undefeated-x-nike-kobe-5-protro-what-if-pack.jpg" alt="Undefeated x Zoom Kobe 5 Protro What If Pack" loading="lazy">
+            <span class="rank-badge">#9</span>
+            <span class="price-badge">~$900</span>
+          </div>
+          <div class="card-body">
+            <h2 class="card-name">Undefeated x Zoom Kobe 5 Protro 'What If Pack'</h2>
+            <div class="card-actions">
+              <a class="cop-btn" href="https://www.goat.com/sneakers/undefeated-x-zoom-kobe-5-protro-what-if-pack-special-box-undft-kobe-5-what-if-pack" target="_blank">Cop It</a>
+              <div class="icon-btns">
+                <button class="icon-btn info-btn" title="Fun facts" aria-label="Show fun facts">ⓘ</button>
+                <button class="icon-btn share-btn" title="Share" aria-label="Share" data-id="sneaker-undftd-kobe5">⬆</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-back">
+          <span class="back-icon">🐍</span>
+          <h3 class="back-title">Did You Know?</h3>
+          <p class="back-fact">From the "What If" pack — imagining what it'd look like if Kobe wore Undefeated colorways. Released posthumously, making it one of the most emotional Kobe 5 Protro drops ever.</p>
+          <button class="flip-back-btn">← Back</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p><strong>Business Inquiries:</strong> <a href="mailto:CrazyCoppers@gmail.com">CrazyCoppers@gmail.com</a></p>
+      <p><strong>Stay Updated:</strong> <a href="https://www.kicksonfire.com/app/" target="_blank">Upcoming Sneaker Drops</a></p>
+      <p class="footer-copy">&copy; 2022 Crazy Coppers. All rights reserved.</p>
     </div>
   </footer>
 
-  <script src="script.js" type="text/javascript" defer></script>
-
+  <script src="script.js"></script>
 </body>
-
 </html>
