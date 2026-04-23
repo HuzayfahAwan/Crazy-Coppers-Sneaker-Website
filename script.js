@@ -1,4 +1,33 @@
-// Theme toggle
+// ─── FIREBASE SETUP ────────────────────────────────────────────────────────────
+//
+// To activate live hype votes:
+// 1. Go to console.firebase.google.com → create a project (free)
+// 2. Click "Add app" → Web → copy the firebaseConfig object → paste it below
+// 3. In Firebase console → Build → Realtime Database → Create database → Start in test mode
+//
+// The page works without Firebase — hype buttons show as offline until configured.
+//
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+let db = null;
+try {
+  if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+    firebase.initializeApp(firebaseConfig);
+    db = firebase.database();
+  }
+} catch (e) {
+  console.warn("Firebase not configured — hype votes offline.", e);
+}
+
+// ─── THEME TOGGLE ──────────────────────────────────────────────────────────────
 const html = document.documentElement;
 const themeToggle = document.getElementById('themeToggle');
 const themeIcon = themeToggle.querySelector('.theme-icon');
@@ -14,7 +43,7 @@ themeToggle.addEventListener('click', () => {
   themeIcon.textContent = next === 'dark' ? '☀️' : '🌙';
 });
 
-// Animated stat counters
+// ─── STAT COUNTERS ─────────────────────────────────────────────────────────────
 function animateCounter(el) {
   const target = parseInt(el.dataset.target);
   const isCurrency = el.dataset.format === 'currency';
@@ -42,7 +71,7 @@ const statsObserver = new IntersectionObserver(entries => {
 
 statsObserver.observe(document.querySelector('.stats-bar'));
 
-// Fade-in on scroll
+// ─── FADE-IN ON SCROLL ─────────────────────────────────────────────────────────
 const fadeObserver = new IntersectionObserver(entries => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
@@ -54,7 +83,7 @@ const fadeObserver = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
-// Skeleton image loaders
+// ─── SKELETON IMAGE LOADERS ────────────────────────────────────────────────────
 document.querySelectorAll('.card-img-wrap img').forEach(img => {
   const wrap = img.parentElement;
   const reveal = () => {
@@ -66,7 +95,7 @@ document.querySelectorAll('.card-img-wrap img').forEach(img => {
   img.addEventListener('error', reveal);
 });
 
-// Toast
+// ─── TOAST ─────────────────────────────────────────────────────────────────────
 const toast = document.getElementById('toast');
 let toastTimer;
 
@@ -77,37 +106,31 @@ function showToast(msg) {
   toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
 }
 
-// Cop It toast (only fires, doesn't block navigation)
+// ─── COP IT TOAST ──────────────────────────────────────────────────────────────
 document.querySelectorAll('.cop-btn').forEach(btn => {
   btn.addEventListener('click', () => showToast('Taking you to the listing... 🔥'));
 });
 
-// Card flip — info button
+// ─── CARD FLIP ─────────────────────────────────────────────────────────────────
 document.querySelectorAll('.info-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.closest('.sneaker-card').classList.add('is-flipped');
-  });
+  btn.addEventListener('click', () => btn.closest('.sneaker-card').classList.add('is-flipped'));
 });
 
-// Card flip — back button
 document.querySelectorAll('.flip-back-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.closest('.sneaker-card').classList.remove('is-flipped');
-  });
+  btn.addEventListener('click', () => btn.closest('.sneaker-card').classList.remove('is-flipped'));
 });
 
-// Share button
+// ─── SHARE BUTTON ──────────────────────────────────────────────────────────────
 document.querySelectorAll('.share-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const id = btn.dataset.id;
-    const url = `${location.origin}${location.pathname}#${id}`;
+    const url = `${location.origin}${location.pathname}#${btn.dataset.id}`;
     navigator.clipboard.writeText(url)
       .then(() => showToast('Link copied to clipboard! 📋'))
       .catch(() => showToast('Could not copy — check browser permissions'));
   });
 });
 
-// Scroll to + highlight card if URL has a hash
+// ─── DEEP LINK ON HASH ─────────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   const hash = location.hash.slice(1);
   if (!hash) return;
@@ -117,14 +140,50 @@ window.addEventListener('DOMContentLoaded', () => {
     card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     card.style.outline = '2px solid var(--gold)';
     card.style.outlineOffset = '3px';
-    setTimeout(() => {
-      card.style.outline = '';
-      card.style.outlineOffset = '';
-    }, 2200);
+    setTimeout(() => { card.style.outline = ''; card.style.outlineOffset = ''; }, 2200);
   }, 400);
 });
 
-// Filter + Search + Sort
+// ─── HYPE VOTES (Firebase Realtime Database) ───────────────────────────────────
+const hypedSneakers = JSON.parse(localStorage.getItem('cc-hyped') || '{}');
+
+document.querySelectorAll('.hype-btn').forEach(btn => {
+  const id = btn.dataset.id;
+  const countEl = btn.querySelector('.hype-count');
+
+  if (!db) {
+    btn.classList.add('offline');
+    btn.title = 'Firebase not configured';
+    return;
+  }
+
+  // Subscribe to real-time count
+  db.ref(`hype/${id}`).on('value', snapshot => {
+    const val = snapshot.val() || 0;
+    countEl.textContent = val.toLocaleString();
+  });
+
+  // Restore voted state
+  if (hypedSneakers[id]) btn.classList.add('hyped');
+
+  btn.addEventListener('click', () => {
+    if (hypedSneakers[id]) {
+      showToast('Already hyped this one! 🔥');
+      return;
+    }
+
+    db.ref(`hype/${id}`).transaction(current => (current || 0) + 1);
+
+    hypedSneakers[id] = true;
+    localStorage.setItem('cc-hyped', JSON.stringify(hypedSneakers));
+
+    btn.classList.add('hyped', 'just-hyped');
+    btn.addEventListener('animationend', () => btn.classList.remove('just-hyped'), { once: true });
+    showToast('Hyped! 🔥');
+  });
+});
+
+// ─── FILTER + SEARCH + SORT ────────────────────────────────────────────────────
 let currentSearch = '';
 let currentBrand = 'all';
 let currentSort = 'desc';
